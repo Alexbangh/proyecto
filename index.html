@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papelería "papelería"la otra"""</title>
+    <style>
+        /* Estilos Generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #yellow;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 960px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #4CAF50; /* Verde Papelería */
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 2em;
+        }
+
+        /* Encabezado (Header) */
+        header {
+            background-color: #4CAF50; /* Verde Papelería */
+            color: white;
+            padding: 1.5em 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px; /* Espacio entre el logo y el texto */
+        }
+
+        .logo {
+            max-width: 80px; /* Tamaño del logo */
+            height: auto;
+            border-radius: 50%; /* Para hacerlo redondo si es un cuadrado */
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-size: 1.1em;
+        }
+
+        /* Navegación (Nav) */
+        nav {
+            background-color: #333;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 15px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #575757;
+            transform: translateY(-2px); /* Pequeña elevación al pasar el ratón */
+        }
+
+        /* Sección de Inicio */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas responsivas */
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .image-grid .grid-item {
+            width: 100%;
+            height: 200px; /* Altura fija para las imágenes de la cuadrícula */
+            object-fit: cover; /* Recorta la imagen para que quepa */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .image-grid .grid-item:hover {
+            transform: scale(1.03); /* Ligeramente más grande al pasar el ratón */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .featured-item {
+            text-align: center;
+            padding: 30px;
+            background-color: #e8f5e9; /* Un verde muy claro */
+            border-radius: 10px;
+            margin-top: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .featured-item img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+        }
+
+        .featured-item img.scale-on-hover:hover {
+            transform: scale(1.08) rotate(2deg); /* Más grande y ligeramente rotado */
+            opacity: 0.9;
+        }
+
+        .featured-item h3 {
+            color: #388E3C; /* Verde más oscuro */
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        /* Sección de Contacto */
+        #contacto ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        #contacto ul li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        #contacto form p {
+            margin-bottom: 15px;
+        }
+
+        #contacto label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        #contacto input[type="text"],
+        #contacto input[type="email"],
+        #contacto textarea {
+            width: calc(100% - 22px); /* Ajuste para padding y borde */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box; /* Incluye padding y borde en el ancho total */
+        }
+
+        #contacto textarea {
+            resize: vertical; /* Permite redimensionar verticalmente */
+        }
+
+        .button-animation {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            display: inline-block; /* Para aplicar la animación de pulso */
+        }
+
+        .button-animation:hover {
+            background-color: #45a049;
+            transform: translateY(-3px); /* Ligeramente elevado */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            animation: pulse 1s infinite alternate; /* Animación de pulso */
+        }
+
+        /* Sección de Ubicación */
+        .map-responsive {
+            overflow: hidden;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            position: relative;
+            height: 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .map-responsive iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            border: none; /* Asegura que no haya borde predeterminado del iframe */
+            border-radius: 10px;
+        }
+
+        /* Pie de Página (Footer) */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #333;
+            color: white;
+            margin-top: 30px;
+            font-size: 0.9em;
+        }
+
+        /* Línea divisoria */
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ddd;
+            margin: 40px 0;
+        }
+
+        /* Animaciones */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated-section {
+            opacity: 0; /* Inicialmente invisible */
+            animation: fadeUp 0.8s ease-out forwards; /* Aplicar animación */
+            /* Para que cada sección aparezca después de la anterior, necesitarías JavaScript */
+            /* Por ahora, todas aparecerán al cargar */
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            }
+            50% {
+                transform: scale(1.03);
+                box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <img src="logo.png" alt="Logo de papelería la otra" class="logo">
+            <div>
+                <h1>Papelería "Papelería"La Otra""</h1>
+                <p>¡Tu lugar para la creatividad y el estudio!</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="URL_DE_TU_REVISTA_AQUI" target="_blank">Revista</a></li>
+            <li><a href=" Aldama #1, Villa Cuauhtémoc,
+Otzolotepec, México. 52080">Ubicación</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="inicio" class="animated-section">
+            <h2>Inicio</h2>
+            <div class="image-grid">
+                <img src="productos.jpg" alt="Variedad de lápices" class="grid-item">
+                <img src="servicio.jpg" alt="Coloridos cuadernos" class="grid-item">
+                <img src="atención.jpg" alt="Surtido de bolígrafos" class="grid-item">
+            </div>
+            <p>¡Bienvenido a la Papelería "El Lapicero Mágico"! Aquí encontrarás todo lo que necesitas para tus proyectos escolares, de oficina y de arte. Desde lápices y cuadernos hasta materiales especializados, tenemos una amplia variedad para satisfacer tus necesidades.</p>
+            <p>Explora nuestras secciones y descubre la magia de la papelería. ¡Estamos aquí para ayudarte a plasmar tus ideas!</p>
+            <div class="featured-item">
+                <img src="promocion.jpg" alt="Artículo en promoción" class="scale-on-hover">
+                <h3>¡No te pierdas nuestra promoción especial!</h3>
+                <p>Visita nuestra sección de ofertas para increíbles descuentos.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="contacto" class="animated-section">
+            <h2>Contacto</h2>
+            <p>¿Tienes alguna pregunta o necesitas ayuda? No dudes en contactarnos:</p>
+            <ul>
+                <li><strong>Teléfono:</strong> +52 55 1234 5678</li>
+                <li><strong>Correo Electrónico:</strong> info@lapiceromagico.com</li>
+                <li><strong>Horario de Atención:</strong> Lunes a Viernes de 9:00 AM a 7:00 PM, Sábados de 10:00 AM a 2:00 PM</li>
+            </ul>
+            <p>También puedes enviarnos un mensaje a través del siguiente formulario (este es un ejemplo, necesitarías un backend para que funcione):</p>
+            <form action="#" method="POST">
+                <p>
+                    <label for="nombre">Nombre:</label><br>
+                    <input type="text" id="nombre" name="nombre" required>
+                </p>
+                <p>
+                    <label for="email">Correo Electrónico:</label><br>
+                    <input type="email" id="email" name="email" required>
+                </p>
+                <p>
+                    <label for="mensaje">Mensaje:</label><br>
+                    <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                </p>
+                <p>
+                    <input type="submit" value="Enviar Mensaje" class="button-animation">
+                </p>
+            </form>
+        </section>
+
+        <hr>
+
+        <section id="ubicacion" class="animated-section">
+            <h2>Ubicación</h2>
+            <p>Nos encontramos en:</p>
+            <p><strong>Villa Cuauhtémoc, Estado de México, México.</strong></p>
+            <p>¡Visítanos! Aquí te dejamos un mapa para que llegues fácilmente:</p>
+            <div class="map-responsive">
+                <iframe src="https://www.google.com/maps/place/Papeler%C3%ADa+%22La+Otra%22/@19.4159847,-99.5620454,17z/data=!3m1!4b1!4m6!3m5!1s0x85d27385ad3a69a9:0x5e51a392d6c2a409!8m2!3d19.4159847!4d-99.5594705!16s%2Fg%2F11jz1pmdgv?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="PAPELERIANLA OTRA"></iframe>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Papelería "papelería la otra". Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
